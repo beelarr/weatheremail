@@ -37,7 +37,7 @@ def get_weather_forecast():
     temp_min = weather_json['main']['temp_min']
     temp_max = weather_json['main']['temp_max']
 
-    forecast = 'The Circus forecast for today is '
+    forecast = 'The forecast for today is '
     forecast += description + ' with a high of ' + str(int(temp_max))
     forecast += ' and a low of ' + str(int(temp_min)) + '.'
 
@@ -51,7 +51,14 @@ def send_emails(emails, schedule, forecast):
     password = input("What's your password?")
     server.login(from_email, password)
 
-    server.sendmail(from_email, from_email, 'test testing')
+    #Sending to entire list
+    for to_email, name in emails.items():
+        message = 'Subject: Todays Forecast!\n'
+        message += 'Hi ' + name + '!\n\n\n'
+        message += forecast + '\n\n\n'
+        message += schedule + '\n\n\n'
+        message += 'Have a great day!' + '\n\n Bryon'
+        server.sendmail(from_email, to_email, message)
     server.quit()
 
 
