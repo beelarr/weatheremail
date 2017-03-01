@@ -4,7 +4,7 @@ def get_emails():
     emails = {}
 
     try:
-        email_file = open('/Users/bryonlarrance/PycharmProjects/emailer/weather_emailer/emails.txt', 'r')
+        email_file = open('/Users/bryonlarrance/weatheremail/weatheremail/inputs/emails.txt', 'r')
         for line in email_file:
             (email, name) = line.split(',')
             emails[email] = name.strip()
@@ -16,7 +16,7 @@ def get_emails():
 
 def get_schedule():
     try:
-        schedule_file = open('/Users/bryonlarrance/PycharmProjects/emailer/weather_emailer/schedule.txt', 'r')
+        schedule_file = open('/Users/bryonlarrance/weatheremail/weatheremail/inputs/schedule.txt', 'r')
         schedule = schedule_file.read()
 
     except FileNotFoundError as err:
